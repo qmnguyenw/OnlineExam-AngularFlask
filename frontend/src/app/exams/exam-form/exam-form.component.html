@@ -1,0 +1,12 @@
+<div>
+  <h2>New Exam</h2>
+  <label for="exam-title"><b>Title</b></label>
+  <input type="text" id="exam-title" (keyup)="updateTitle($event)" />
+  <label for="exam-description"><b>Description</b></label>
+  <input
+    type="text"
+    id="exam-description"
+    (keyup)="updateDescription($event)"
+  />
+  <button (click)="saveExam()">Save Exam</button>
+</div>

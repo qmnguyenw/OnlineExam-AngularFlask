@@ -1,15 +1,14 @@
-import { ExamsApiService } from './service/exams-api.service';
-import { Exam } from './model/exam.model';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Exam } from '../model/exam.model';
+import { ExamsApiService } from '../service/exams-api.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-exams',
+  templateUrl: './exams.component.html',
+  styleUrls: ['./exams.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
-  title = 'frontend';
+export class ExamsComponent implements OnInit, OnDestroy {
   examsListSubs: Subscription;
   examsList: Exam[];
 

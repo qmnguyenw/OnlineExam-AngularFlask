@@ -1,0 +1,9 @@
+<h2>Here are the exams created so far:</h2>
+<div>
+  <button [routerLink]="['/new-exam']" routerLinkActive="router-link-active">
+    New Exam
+  </button>
+  <ul>
+    <li *ngFor="let exam of examsList">{{ exam.title }}</li>
+  </ul>
+</div>
