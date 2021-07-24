@@ -8,8 +8,8 @@ from .entities.exam import Exam, ExamSchema
 
 # creating the Flask application
 app = Flask(__name__)
-CORS(app) # read flask-cors document to know more about CORS in product process
-
+# CORS(app) # read flask-cors document to know more about CORS in product process
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 # generate database schema
 Base.metadata.create_all(engine)
 
@@ -64,3 +64,23 @@ def add_exam():
     new_exam = ExamSchema().dump(exam)
     session.close()
     return jsonify(new_exam), 201
+
+@app.route('/exams/<examId>')
+def get_exam(examId):
+    session = Session()
+    exam = session.query(Exam).filter_by(id=examId).first()
+     # transforming into JSON-serializable objects
+    schema = ExamSchema(many=False)
+    exams = schema.dump(exam)
+    # serializing as JSON
+    session.close()
+    return jsonify(exams)
+
+@app.route('/exams/<examId>', methods=['DELETE'])
+def delete_exam(examId):
+    session = Session()
+    exam = session.query(Exam).filter_by(id=examId).first()
+    session.delete(exam)
+    session.commit()
+    session.close()
+    return '', 405

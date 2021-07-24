@@ -30,4 +30,15 @@ export class ExamsApiService {
     };
     return this.http.post(`${API_URL}/exams`, exam, httpOptions);
   }
+
+  deleteExam(examId: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // 'Authorization': `Bearer ${Auth0.getAccessToken()}`
+        'Access-Control-Allow-Credentials': `true`,
+      }),
+    };
+    return this.http.delete(`${API_URL}/exams/${examId}`, httpOptions);
+    // return this.http.delete(`${API_URL}/exams/${examId}`);
+  }
 }

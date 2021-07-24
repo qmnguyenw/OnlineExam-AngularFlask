@@ -23,4 +23,13 @@ export class ExamsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.examsListSubs.unsubscribe();
   }
+
+  delete(examId: number) {
+    console.log(this.examsList);
+    this.examsApi.deleteExam(examId).subscribe(() => {
+      this.examsListSubs = this.examsApi.getExams().subscribe((res) => {
+        this.examsList = res;
+      }, console.error);
+    }, console.error);
+  }
 }

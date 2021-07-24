@@ -1,7 +1,8 @@
-<div style="text-align: center">
+<!-- <div style="text-align: center">
   <h1>Exams</h1>
-</div>
+</div> 
 <router-outlet></router-outlet>
+-->
 
 <!-- 
 <ul>
@@ -10,3 +11,18 @@
   </li>
 </ul> 
 -->
+
+<mat-toolbar color="primary" class="mat-elevation-z5">
+  <button mat-button>Online Exams</button>
+  <button mat-button>About</button>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+
+  <!-- <button mat-button (click)="signIn()" *ngIf="!authenticated">Sign In</button>
+  <button mat-button (click)="signOut()" *ngIf="authenticated">Sign Out</button> -->
+</mat-toolbar>
+
+<div class="view-container">
+  <router-outlet></router-outlet>
+</div>
